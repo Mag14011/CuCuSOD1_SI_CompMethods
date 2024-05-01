@@ -1,0 +1,77 @@
+ source oldff/leaprc.ff14SB
+ source leaprc.gaff
+ source leaprc.water.tip3p
+
+ addAtomTypes {
+        { "M1"  "Cu" "sp3" }
+        { "M2"  "Cu" "sp3" }
+        { "Y1"  "N" "sp3" }
+        { "Y2"  "N" "sp3" }
+        { "Y3"  "N" "sp3" }
+        { "Z1"  "N" "sp3" }
+        { "Z2"  "N" "sp3" }
+        { "Z3"  "O" "sp3" }
+ }
+
+# Reduced Cu in Cu Site
+ loadoff          /data/SOD1/mcpb/Reduced/CuSite/ReducedCuSite.lib
+ loadamberparams  /data/SOD1/mcpb/Reduced/CuSite/ReducedCuSite.frcmod
+# Reduced Cu in Zn Site
+ loadoff          /data/SOD1/mcpb/Reduced/ZnSite/mutHIE71/SecondGen/ReducedCuInZnSite.lib
+ loadamberparams  /data/SOD1/mcpb/Reduced/ZnSite/mutHIE71/SecondGen/ReducedCuInZnSite.frcmod
+# Salt 
+ loadamberparams frcmod.ions1lm_126_tip3p
+
+ mol = loadpdb pre-acetylate.pdb
+
+ bond mol.58.SG mol.147.SG
+ bond mol.47.ND1 mol.155.CU
+ bond mol.49.NE2 mol.155.CU
+ bond mol.121.NE2 mol.155.CU
+ bond mol.46.C mol.47.N
+ bond mol.47.C mol.48.N
+ bond mol.48.C mol.49.N
+ bond mol.49.C mol.50.N
+ bond mol.120.C mol.121.N
+ bond mol.121.C mol.122.N
+
+ bond mol.64.ND1 mol.156.CU
+ bond mol.81.ND1 mol.156.CU
+ bond mol.84.OD1 mol.156.CU
+ bond mol.63.C mol.64.N
+ bond mol.64.C mol.65.N
+ bond mol.80.C mol.81.N
+ bond mol.81.C mol.82.N
+ bond mol.83.C mol.84.N
+ bond mol.84.C mol.85.N
+
+ bond mol.214.SG mol.303.SG
+ bond mol.203.ND1 mol.311.CU
+ bond mol.205.NE2 mol.311.CU
+ bond mol.277.NE2 mol.311.CU
+ bond mol.202.C mol.203.N
+ bond mol.203.C mol.204.N
+ bond mol.204.C mol.205.N
+ bond mol.205.C mol.206.N
+ bond mol.276.C mol.277.N
+ bond mol.277.C mol.278.N
+
+ bond mol.220.ND1 mol.312.CU
+ bond mol.237.ND1 mol.312.CU
+ bond mol.240.OD1 mol.312.CU
+ bond mol.219.C mol.220.N
+ bond mol.220.C mol.221.N
+ bond mol.236.C mol.237.N
+ bond mol.237.C mol.238.N
+ bond mol.239.C mol.240.N
+ bond mol.240.C mol.241.N
+
+ solvatebox mol TIP3PBOX 15.0
+ addions mol Na+ 0
+ addions mol Cl- 0
+
+#saveamberparm mol 2C9V_CuCuSiteHIE71.prmtop 2C9V_CuCuSiteHIE71.inpcrd
+ saveamberparm mol 2C9V_CuCuSiteHIP71.prmtop 2C9V_CuCuSiteHIP71.inpcrd
+
+ quit
+ 
